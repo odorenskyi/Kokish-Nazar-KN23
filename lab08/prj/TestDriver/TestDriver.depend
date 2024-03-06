@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1709709470 source:d:\github_bmtp\kokish-nazar-kn23\lab08\prj\testdriver\main.cpp
+	<iostream>
+	<locale.h>
+	"ModulesKokish_.h"
+
+1709709561 d:\github_bmtp\kokish-nazar-kn23\lab08\prj\moduleskokish\moduleskokish_.h
+
