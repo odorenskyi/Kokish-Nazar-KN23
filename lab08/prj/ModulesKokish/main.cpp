@@ -7,6 +7,7 @@ using namespace std;
 
 void s_calculation(int x, int y, int z)
 {
+
     setlocale(LC_ALL,"UA");
     float S;
     if (x > y && y != 0){
@@ -19,4 +20,6 @@ void s_calculation(int x, int y, int z)
     }
 
 }
+
+
 
