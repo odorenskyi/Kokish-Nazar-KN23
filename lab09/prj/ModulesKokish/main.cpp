@@ -12,7 +12,6 @@ void s_calculation(int x, int y, int z){
     system("chcp 65001 & cls");
 
 
-    setlocale(LC_ALL,"UA");
     float S;
     if (x > y && y != 0){
     //S = log(x-y)+sqrt((M_PI * pow(x, 2)) / (x + z / (2 * pow(y, 2))));
