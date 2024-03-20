@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1710708919 source:d:\github_bmtp\kokish-nazar-kn23\lab08\prj\moduleskokish\main.cpp
+	<iostream>
+	<cmath>
+	<iomanip>
+	<locale.h>
+
+1710905255 source:d:\github_bmtp\kokish-nazar-kn23\lab09\prj\moduleskokish\main.cpp
+	<iostream>
+	<cmath>
+	<iomanip>
+	<locale.h>
+	<bits/stdc++.h>
+	<string>
+
