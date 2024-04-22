@@ -5,11 +5,14 @@
 	<iomanip>
 	<locale.h>
 
-1710905255 source:d:\github_bmtp\kokish-nazar-kn23\lab09\prj\moduleskokish\main.cpp
+1713817498 source:d:\github_bmtp\kokish-nazar-kn23\lab09\prj\moduleskokish\main.cpp
 	<iostream>
 	<cmath>
 	<iomanip>
 	<locale.h>
 	<bits/stdc++.h>
 	<string>
+	<fstream>
+	<ctime>
+	<cstdlib>
 

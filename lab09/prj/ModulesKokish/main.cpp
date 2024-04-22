@@ -4,22 +4,21 @@
 #include <locale.h>
 #include <bits/stdc++.h>
 #include <string>
-
+#include <fstream>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 // Lab 8
-void s_calculation(int x, int y, int z){
-    system("chcp 65001 & cls");
-
-
+float s_calculation(int x, int y, int z){
     float S;
     if (x > y && y != 0){
     //S = log(x-y)+sqrt((M_PI * pow(x, 2)) / (x + z / (2 * pow(y, 2))));
     S = log(x - y) + pow(x, 2) * M_PI * (1 + 2 * pow(z, 2));
-     cout << "S: " << setprecision(3) << fixed << S << endl;
+    return S;
     }
     else {
-    cout << "Неможливо визначити, результат виразу не може бути обчисленим" << endl;
+    return -1;
     }
 
 }
@@ -81,4 +80,119 @@ if (x > 0 && x < 17948360) {
   } else {
     return -1;
   }
+}
+// Lab 10
+//1
+void addAuthorInfo(const char* file_name, const char* file_name1) {
+    ifstream inFile(file_name);
+    ofstream outFile(file_name1);
+    if (!inFile.is_open()) {
+        outFile << "Помилка: вхідний файл не існує або не може бути відкритий!" << endl;
+        inFile.close();
+
+        return;
+    }
+    if (outFile.fail()) {
+        outFile << "Не вдалося створити або відкрити файл!" << endl;
+        return;
+    }
+
+    srand(rand());
+    outFile << "Авторська інформація: Назар Кокіш" << endl;
+    outFile << "Центральноукраїнський національний технічний університет" << endl;
+    outFile << "Кропивницький" << endl;
+    outFile << "Україна" << endl;
+    outFile << "2024" << endl;
+    outFile << "Випадкове число: " << rand() % 100 << endl;
+
+    string line;
+    bool hasPunctuationError = true;
+    while (getline(inFile, line)) {
+        if (!line.empty()) {
+            char last_char = line.back();
+            if (last_char != ',' && last_char != '.' && last_char != '!' && last_char != '?') {
+                hasPunctuationError = false;
+                break;
+            }
+        }
+    }
+    inFile.close();
+
+    if (hasPunctuationError) {
+        outFile << "Текст віршу із вхідного файла не має пунктуаційні помилки" << endl;
+    } else {
+        outFile << "Текст віршу із вхідного файла має пунктуаційні помилки" << endl;
+    }
+
+    outFile.close();
+}
+//2
+void appendAlphabet(const char* file_name) {
+    ofstream outFile(file_name, ios::app);
+
+    if (!outFile.is_open()) {
+        cout << "Помилка: вихідний файл '" << file_name << "' не може бути відкритий!" << endl;
+        return;
+    }
+
+    // Додаємо англійську абетку у верхньому регістрі
+    for (char ch = 'A'; ch <= 'Z'; ++ch) {
+        outFile << ch << " ";
+    }
+    outFile<< endl;
+    time_t currentTime = time(nullptr);
+    tm* localTime = localtime(&currentTime);
+    char timeBuffer[50];
+    //outFile << strftime(timeBuffer, 50, "%Y-%m-%d %H:%M:%S", localTime)<< endl;
+    strftime(timeBuffer, 50, "%Y-%m-%d %H:%M:%S", localTime);
+    outFile << timeBuffer << endl;
+    outFile.close();
+
+}
+//3
+void addResults(const char* input_file_name, const char* output_file_name) {
+    ifstream inFile(input_file_name);
+    ofstream outFile(output_file_name, ios::app);
+
+    if (!inFile.is_open()) {
+        cout << "Помилка: вхідний файл '" << input_file_name << "' не може бути відкритий!" << endl;
+        return;
+    }
+
+    if (!outFile.is_open()) {
+        cout << "Помилка: вихідний файл '" << output_file_name << "' не може бути відкритий!" << endl;
+        inFile.close();
+        return;
+    }
+
+    int x, y, z, b;
+    char comma;
+
+    // Зчитуємо значення x, y, z та b з вхідного файлу
+    inFile >> x >> comma >> y >> comma >> z >> comma >> b;
+
+    // Викликаємо функцію s_calculation зі зчитаними значеннями
+    float result = s_calculation(x, y, z);
+
+    // Перетворюємо число b у двійкове представлення
+    string binary_b = bitset<sizeof(int) * 8>(b).to_string();
+
+    // Записуємо результати у вихідний файл
+    outFile << "Результат виконання функції s_calculation з аргументами " << x << ", " << y << ", " << z << ": " << result << endl;
+    outFile << "Число "<<b<<" у двійковому коді: " << binary_b << endl;
+
+    inFile.close();
+    outFile.close();
+}
+void writeValues(const char* file_name, int x, int y, int z, int b) {//для запису нових x y z b у файл
+    ofstream outFile(file_name, ios::out);
+
+    if (!outFile.is_open()) {
+        cout << "Помилка: вихідний файл '" << file_name << "' не може бути відкритий!" << endl;
+        return;
+    }
+
+    outFile << x << ", " << y << ", " << z << ", " << b << endl;
+
+    outFile.close();
 }
