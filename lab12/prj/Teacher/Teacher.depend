@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1716027333 source:d:\github_bmtp\kokish-nazar-kn23\lab12\prj\teacher\main.cpp
+	<iostream>
+	<stdexcept>
+	"Modules okish.h"
+
+1716027592 d:\github_bmtp\kokish-nazar-kn23\lab12\prj\modules okish.h
+	<cmath>
+	<stdexcept>
+	<iostream>
+
